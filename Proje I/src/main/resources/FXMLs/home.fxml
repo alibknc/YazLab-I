@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kargotakip.controllers.HomeController">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="800.0" style="-fx-background-color: #ebebeb;">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="400.0" text="Kargo Takip Sistemi" textAlignment="CENTER" textFill="#6e6e6e">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Pane prefHeight="100.0" prefWidth="250.0" />
+                  <Button fx:id="haritaBtn" mnemonicParsing="false" onMouseClicked="#haritaAc" text="Haritayı Aç" />
+               </children>
+            </HBox>
+            <HBox fx:id="hbox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Konum Seçin :">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Pane prefHeight="100.0" prefWidth="25.0" />
+                  <ChoiceBox fx:id="konumSec" prefHeight="26.0" prefWidth="200.0" />
+                  <Pane prefHeight="100.0" prefWidth="130.0" />
+                  <Button fx:id="listeGetirBtn" mnemonicParsing="false" onAction="#listeGuncelleEkle" onMouseClicked="#konumEkle" text="Liste Getir" />
+                  <Pane prefHeight="100.0" prefWidth="10.0" />
+                  <Button fx:id="konumEkleBtn" layoutX="665.0" layoutY="48.0" mnemonicParsing="false" onMouseClicked="#konumEkle" text="Konum Ekle" />
+               </children>
+            </HBox>
+            <ScrollPane fx:id="scrollPane" prefHeight="400.0" prefWidth="800.0">
+               <content>
+                  <VBox fx:id="list" prefHeight="384.0" prefWidth="798.0" />
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% block style %}
+<link href="{% static 'css/query.css' %}" rel="stylesheet" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Lato:400,600,700" rel="stylesheet" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<title>{% block title %}Sorgulama{% endblock %}</title>
+{% endblock %}
+<div class="main-content">
+    <form method="GET" action=".">
+        <div class="form-row">
+            <div class="form-group col-12">
+                <div class="input-group">
+                    <input class="form-control py-2 border-right-0 border" type="search" name="numara"
+                        placeholder="Öğrenci No..." />
+                    <span class="input-group-append">
+                        <div class="input-group-text bg-transparent">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-12">
+                <div class="input-group">
+                    <input class="form-control py-2 border-right-0 border" type="search" name="baslik"
+                        placeholder="Başlık..." />
+                    <span class="input-group-append">
+                        <div class="input-group-text bg-transparent">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-12">
+                <div class="input-group">
+                    <input class="form-control py-2 border-right-0 border" type="search" name="anahtar"
+                        placeholder="Anahtar Kelime..." />
+                    <span class="input-group-append">
+                        <div class="input-group-text bg-transparent">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="ders">Ders</label>
+                <select id="ders" class="form-control" name="ders">
+                    <option selected>Seçiniz...</option>
+                    {% for ders in dersler %}
+                    <option value="{{ ders }}">{{ ders }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="ogretim">Öğretim Türü</label>
+                <select id="ogretim" class="form-control" name="ogretim">
+                    <option selected>Seçiniz...</option>
+                    {% for ogretim in ogretimler %}
+                    <option value="{{ ogretim }}">{{ ogretim }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="donem">Dönem</label>
+                <select id="donem" class="form-control" name="donem">
+                    <option selected>Seçiniz...</option>
+                    {% for donem in donemler %}
+                    <option value="{{ donem }}">{{ donem }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary send-button">Ara</button>
+    </form>
+    <div class="container">
+        <h2 class="text-center">Arama Sonuçları</h2><br>
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>Adı Soyadı</th>
+                    <th>Numarası</th>
+                    <th>Öğretim</th>
+                    <th>Başlık</th>
+                    <th>Ders</th>
+                    <th>Danışman</th>
+                    <th>Anahtar Kelimeler</th>
+                    <th>Detay</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if d %}
+                {% for i in d %}
+                <tr>
+                    <td>{{i.yazarAdi}}</td>
+                    <td>{{i.numara}}</td>
+                    <td>{{i.ogretim}}</td>
+                    <td>{{i.baslik}}</td>
+                    <td>{{i.dersAdi}}</td>
+                    <td>{{i.danisman}}</td>
+                    <td>{{i.anahtarKelimeler}}</td>
+                    <td><a href="{% url 'details' id=i.numara %}" target="_blank">
+                            <i class="fa fa-search"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% block style %}
+<link href="{% static 'css/home.css' %}" rel="stylesheet" />
+{% endblock %}
+<div class="main-content">
+    <div class="student-profile py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-transparent text-center">
+                            <img class="profile_img" src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-default-avatar-profile-icon-vector-social-media-user-image-vector-illustration-227787227.jpg"
+                                alt="student dp">
+                            <h3>{% if d %}{{d.first_name}} {{d.last_name}}{% endif %}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-transparent border-0">
+                            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Genel Bilgiler</h3>
+                        </div>
+                        <div class="card-body pt-0">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th width="30%">ID</th>
+                                    <td width="2%">:</td>
+                                    <td>{% if d %}{{d.id}}{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <th width="30%">Bölüm</th>
+                                    <td width="2%">:</td>
+                                    <td>Bilgisayar Mühendisliği</td>
+                                </tr>
+                                <tr>
+                                    <th width="30%">Akademik Yıl</th>
+                                    <td width="2%">:</td>
+                                    <td>2021</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div style="height: 26px"></div>
+                    <!--<div class="card shadow-sm">
+                        <div class="card-header bg-transparent border-0">
+                            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Other Information</h3>
+                        </div>
+                        <div class="card-body pt-0">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut
+                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                ullamco
+                                laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
